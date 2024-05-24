@@ -58,29 +58,15 @@ idlecn_build
     cd ..
     ```
 
-3.  Create backport patches from `base`.
+3.  Create and apply patches.
 
+    Linux:
     ```bash
-    cd IDLE-CN
-    cd base
-    git remote add upstream ../../cpython
-    git fetch upstream
-    git format-patch upstream/main
-    cd ../..
+    bash ./IDLE-CN/Tools/make_release.sh
     ```
-4.  Set up each backport version, then apply patches.
-
-    ```bash
-    # For version 3.8
-    cd IDLE-CN
-    mkdir 3.8
-    cd 3.8
-    git init
-    git remote add upstream ../../cpython
-    git fetch upstream
-    git checkout -t upstream/3.8
-    git am ../base/*.patch
-    cd ../..
-
-    # Repeat the above steps for each additional version
+    Windows:
+    ```cmd
+    .\IDLE-CN\Tools\make_release.cmd
     ```
+
+4.  Read all `*.rej` files and resolve conflicts manually.
