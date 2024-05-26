@@ -60,13 +60,8 @@ idlecn_build
 
 3.  Create and apply patches.
 
-    Linux:
     ```bash
-    bash ./IDLE-CN/Tools/make_release.sh
-    ```
-    Windows:
-    ```cmd
-    .\IDLE-CN\Tools\make_release.cmd
+    python .\IDLE-CN\Tools\make_release.py
     ```
 
 4.  Read all `*.rej` files and resolve conflicts manually.
