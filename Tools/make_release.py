@@ -17,10 +17,6 @@ class GitException(Exception):
 
 
 def make_release(version: str, patch: str):
-    print(
-        f"\n{INFO}>>>{END} Making release for {INFO}{version}{END}"
-        f" from {INFO}base@{patch}{END}..."
-    )
     errorno = 0
     release_dir = build_dir / "IDLE-CN" / version
 
@@ -41,9 +37,7 @@ def make_release(version: str, patch: str):
         raise GitException(f"Failed to checkout {version} from cpython@{version}")
 
     for patch_file in (patch_dir / patch).glob("*.patch"):
-        errorno += os.system(
-            f"git apply --ignore-whitespace --reject --recount {patch_file}"
-        )
+        errorno += os.system(f"git apply --reject --recount {patch_file}")
         errorno += os.system("git add .")
         errorno += os.system(f'git commit -m "Backport patch {patch_file.name}"')
     if errorno:
@@ -52,6 +46,22 @@ def make_release(version: str, patch: str):
             raise GitException(f"{rej_count} patches failed to apply")
         else:
             raise GitException("During patching, some error occurred")
+
+
+def find_closest_patch(version: str):
+    patches = sorted(
+        (
+            tuple(map(int, version.split(".")))
+            for version in patch_branches
+            if version != "main"
+        )
+    )
+    version = tuple(map(int, version.split(".")))
+    for patch in patches:
+        if patch >= version:
+            return ".".join(map(str, patch))
+    else:
+        return "main"
 
 
 # ==== Main ====
@@ -71,6 +81,7 @@ print(f"\n{INFO}>>> Creating patches...{END}")
 os.chdir(base_dir)
 os.system("git remote add upstream ../../cpython")
 os.system("git fetch upstream --no-tags")
+os.system("git checkout main")
 os.system("git branch")  # Just to show the current branch
 patch_branches = [
     ln.replace("*", "").strip()
@@ -78,25 +89,35 @@ patch_branches = [
     if ln
 ]
 for branch in patch_branches:
-    print(f"\n{INFO}>>>{END} Creating patch from {INFO}base@{branch}{END}...")
+    print(
+        f"\n{INFO}>>>{END} Creating patch for "
+        f"{INFO}cpython@{branch} -> base@{branch}{END}..."
+    )
     patch_dir_branch = patch_dir / branch
     patch_dir_branch.mkdir(parents=True, exist_ok=True)
-    os.system(
-        f"git format-patch --ignore-all-space upstream/{branch} -o {patch_dir_branch}"
-    )
+    os.system(f"git checkout {branch}")
+    os.system(f"git format-patch upstream/{branch} -o {patch_dir_branch}")
 
 print(f"\n{INFO}>>> Creating releases...{END}")
 with open(build_dir / "IDLE-CN" / "Tools" / "release_versions.txt") as file:
     for line in file:
         version = line.strip()
+        patch = find_closest_patch(version)
         try:
             os.chdir(build_dir)
-            make_release(version, version if version in patch_branches else "main")
+            print(
+                f"\n{INFO}>>>{END} Making release for "
+                f"{INFO}{version} <- base@{patch}{END}..."
+            )
+            make_release(version, patch)
             os.chdir(build_dir)
         except Skip:
             print(f"{WARNING}>>> Release {version} skipped.{END}")
         except GitException as e:
-            print(f"{ERROR}>>> Release {version} failed: {e}{END}")
+            print(f"{ERROR}>>> Release {version} <- Patch {patch} failed: {e}{END}")
         else:
-            print(f"{SUCCESS}>>> Release {version} finished with no errors.{END}")
+            print(
+                f"{SUCCESS}>>> Release {version} <- Patch {patch} "
+                f"finished with no errors.{END}"
+            )
 print(f"\n{INFO}>>> Finished making releases :){END}\n")
