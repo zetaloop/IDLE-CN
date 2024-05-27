@@ -82,12 +82,13 @@ os.chdir(base_dir)
 os.system("git remote add upstream ../../cpython")
 os.system("git fetch upstream --no-tags")
 os.system("git checkout main")
-os.system("git branch")  # Just to show the current branch
 patch_branches = [
     ln.strip().split(" ")[0].split("/")[1]
     for ln in os.popen("git branch -r").read().split("\n")
     if "origin" in ln and "HEAD" not in ln
 ]
+for branch in patch_branches:
+    print(f"  {INFO}origin/{branch}{END}")
 for branch in patch_branches:
     print(
         f"\n{INFO}>>>{END} Creating patch for "
