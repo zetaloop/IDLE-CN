@@ -1,4 +1,5 @@
 import os
+import shutil
 from pathlib import Path
 
 ERROR = "\033[91m"
@@ -18,16 +19,16 @@ class GitException(Exception):
 
 def make_release(version: str, patch: str):
     errorno = 0
-    release_dir = build_dir / "IDLE-CN" / version
+    release_version_dir = release_tmp_dir / version
 
-    if release_dir.exists():
+    if release_version_dir.exists():
         print(f"Directory '{version}' already exists.")
         raise Skip
-    release_dir.mkdir(parents=True)
-    os.chdir(release_dir)
+    release_version_dir.mkdir(parents=True)
+    os.chdir(release_version_dir)
 
     errorno += os.system("git init")
-    errorno += os.system("git remote add upstream ../../cpython")
+    errorno += os.system("git remote add upstream ../../../cpython")
     errorno += os.system("git fetch upstream --no-tags")
     if errorno:
         raise GitException(f"Failed to init {version} repo")
@@ -41,11 +42,25 @@ def make_release(version: str, patch: str):
         errorno += os.system("git add .")
         errorno += os.system(f'git commit -m "Backport patch {patch_file.name}"')
     if errorno:
-        rej_count = len(list(release_dir.rglob("*.rej")))
+        rej_count = len(list(release_version_dir.rglob("*.rej")))
         if rej_count:
             raise GitException(f"{rej_count} patches failed to apply")
         else:
             raise GitException("During patching, some error occurred")
+
+    print()
+    print(f"tmp_release/{version}/idlelib ==copying=> release/{version}/idlelib")
+    shutil.copytree(
+        "idlelib",
+        release_dir / version / "idlelib",
+        dirs_exist_ok=True,
+    )
+    print(f"tmp_release/{version}/turtledemo ==copying=> release/{version}/turtledemo")
+    shutil.copytree(
+        "turtledemo",
+        release_dir / version / "turtledemo",
+        dirs_exist_ok=True,
+    )
 
 
 def find_closest_patch(version: str):
@@ -69,7 +84,9 @@ def find_closest_patch(version: str):
 # Path: idlecn_build/IDLE-CN/Tools/make_release.py
 build_dir = Path(__file__).resolve().parent.parent.parent
 base_dir = build_dir / "IDLE-CN" / "base"
-patch_dir = build_dir / "IDLE-CN" / "patch"
+patch_dir = build_dir / "IDLE-CN" / "patches"
+release_dir = build_dir / "IDLE-CN" / "idlecn" / "releases"
+release_tmp_dir = build_dir / "IDLE-CN" / "tmp_releases"
 
 os.chdir(build_dir)
 if "idlecn_build" not in os.getcwd():
