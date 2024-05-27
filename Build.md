@@ -5,14 +5,14 @@
 汉化修改都在 base 中进行，然后移植回各个发行版。
 
 ```bash
-idlecn_build
+idcn_build
 │
 ├── cpython  # 从 python/cpython 储存库中提取的 IDLE 部分
 │   ├── idlelib
 │   └── turtledemo
 │
 └── IDLE-CN  # IDLE-CN 项目
-    ├── idlecn  # 汉化模块
+    ├── idcn  # 汉化模块
     │   ├── releases
     │   │   ├── 3.8  # IDLE 3.8 汉化发布版
     │   │   │   ├── idlelib
@@ -45,8 +45,8 @@ idlecn_build
 1.  克隆 IDLE-CN。
 
     ```bash
-    mkdir idlecn_build
-    cd idlecn_build
+    mkdir idcn_build
+    cd idcn_build
 
     # 克隆 IDLE-CN
     git clone https://github.com/zetaloop/IDLE-CN.git
@@ -101,14 +101,14 @@ idlecn_build
 Changes are made in the base directory, then backported to each version.
 
 ```bash
-idlecn_build
+idcn_build
 │
 ├── cpython  # Extracted IDLE from python/cpython
 │   ├── idlelib
 │   └── turtledemo
 │
 └── IDLE-CN  # IDLE-CN Project
-    ├── idlecn  # Translator Module
+    ├── idcn  # Translator Module
     │   ├── releases
     │   │   ├── 3.8  # IDLE 3.8 zh-CN Release
     │   │   │   ├── idlelib
@@ -140,8 +140,8 @@ idlecn_build
 1.  Clone IDLE-CN.
 
     ```bash
-    mkdir idlecn_build
-    cd idlecn_build
+    mkdir idcn_build
+    cd idcn_build
 
     # Clone IDLE-CN
     git clone https://github.com/zetaloop/IDLE-CN.git

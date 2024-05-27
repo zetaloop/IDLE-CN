@@ -15,7 +15,7 @@
 
 打开您的命令提示符或终端，输入以下命令：
 ```bash
-pip install idlecn
+pip install idcn
 # 如果连接速度比较慢的话，请在后边加上 -i https://mirrors.aliyun.com/pypi/simple
 ```
 安装完成后，打开您的 IDLE，界面即为中文。
@@ -24,9 +24,9 @@ pip install idlecn
 
 同样输入以下命令卸载：
 ```bash
-pip uninstall idlecn
+pip uninstall idcn
 ```
-卸载 idlecn 之后您的 IDLE 将恢复原版英文。
+卸载 idcn 之后您的 IDLE 将恢复原版英文。
 
 ## 开发资料
 

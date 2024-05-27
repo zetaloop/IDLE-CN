@@ -1,19 +1,18 @@
 from setuptools import setup
 from pathlib import Path
-import os
 
 
-def find_idlecn_release_files():
-    release_dir = Path("idlecn/releases")
+def find_idcn_release_files():
+    release_dir = Path("idcn/releases")
     release_files = []
     for file in release_dir.rglob("*"):
         if file.is_file():
-            release_files.append(str(file.relative_to("idlecn")))
+            release_files.append(str(file.relative_to("idcn")))
     return release_files
 
 
 setup(
-    name="idlecn",
+    name="idcn",
     version="1.0.0",
     author="zetaloop",
     author_email="zetaloop@outlook.com",
@@ -21,9 +20,9 @@ setup(
     long_description=open("README.md", "r", encoding="utf-8").read(),
     long_description_content_type="text/markdown",
     url="https://github.com/zetaloop/IDLE-CN",
-    packages=["idlecn"],
-    package_data={"idlecn": find_idlecn_release_files()},
-    data_files=[("Lib/site-packages", ["idlecn.pth"])],
+    packages=["idcn"],
+    package_data={"idcn": find_idcn_release_files()},
+    data_files=[("Lib/site-packages", ["idcn.pth"])],
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",

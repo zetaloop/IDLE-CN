@@ -81,16 +81,16 @@ def find_closest_patch(version: str):
 
 # ==== Main ====
 
-# Path: idlecn_build/IDLE-CN/Tools/make_release.py
+# Path: idcn_build/IDLE-CN/Tools/make_release.py
 build_dir = Path(__file__).resolve().parent.parent.parent
 base_dir = build_dir / "IDLE-CN" / "base"
 patch_dir = build_dir / "IDLE-CN" / "patches"
-release_dir = build_dir / "IDLE-CN" / "idlecn" / "releases"
+release_dir = build_dir / "IDLE-CN" / "idcn" / "releases"
 release_tmp_dir = build_dir / "IDLE-CN" / "tmp_releases"
 
 os.chdir(build_dir)
-if "idlecn_build" not in os.getcwd():
-    print(f"{ERROR}Please run this script in the idlecn_build directory!{END}")
+if "idcn_build" not in os.getcwd():
+    print(f"{ERROR}Please run this script in the idcn_build directory!{END}")
     exit(1)
 print(f"\n{INFO}>>> Current directory: {Path.cwd()}{END}")
 
