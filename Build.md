@@ -7,23 +7,29 @@
 ```bash
 idlecn_build
 │
-├── cpython  # 从 python/cpython 储存库中提取 IDLE 部分
+├── cpython  # 从 python/cpython 储存库中提取的 IDLE 部分
 │   ├── idlelib
 │   └── turtledemo
 │
-└── IDLE-CN
+└── IDLE-CN  # IDLE-CN 项目
+    ├── idlecn  # 汉化模块
+    │   ├── releases
+    │   │   ├── 3.8  # IDLE 3.8 汉化发布版
+    │   │   │   ├── idlelib
+    │   │   │   └── turtledemo
+    │   │   └── ...  # 更多版本
+    │   └── __init__.py
+    │
     ├── base  # 最新汉化版本，基于 cpython@main
     │   ├── idlelib
     │   └── turtledemo
     │
-    ├── 3.8  # cpython@3.8 的移植
-    │   ├── idlelib
-    │   └── turtledemo
+    ├── Tools
+    │   ├── make_release.py  # 自动移植脚本
+    │   └── release_versions.txt  # 3.8 ~ 3.13
     │
-    ...  # 更多版本
-    │
-    ├── __init__.py
-    └── setup.py
+    └── setup.py  # 安装脚本
+
 ```
 
 ## 手动构建
@@ -66,6 +72,26 @@ idlecn_build
 
 4.  查看所有产生的 `*.rej` 冲突文件，手动解决补丁冲突。
 
+5.  打包与安装。
+
+    本地安装：
+
+    ```bash
+    cd IDLE-CN
+    pip install .
+    cd ..
+    ```
+
+    打包上传至 PyPI：
+
+    ```bash
+    cd IDLE-CN
+    python setup.py sdist bdist_wheel
+    twine upload dist/*
+    cd ..
+    ```
+
+
 ---
 
 # Building IDLE-CN
@@ -81,19 +107,24 @@ idlecn_build
 │   ├── idlelib
 │   └── turtledemo
 │
-└── IDLE-CN
-    ├── base  # Patched newest IDLE, based on cpython@main
+└── IDLE-CN  # IDLE-CN Project
+    ├── idlecn  # Translator Module
+    │   ├── releases
+    │   │   ├── 3.8  # IDLE 3.8 zh-CN Release
+    │   │   │   ├── idlelib
+    │   │   │   └── turtledemo
+    │   │   └── ...  # More versions
+    │   └── __init__.py
+    │
+    ├── base  # Patched newest IDLE source, based on cpython@main
     │   ├── idlelib
     │   └── turtledemo
     │
-    ├── 3.8  # cpython@3.8 backport
-    │   ├── idlelib
-    │   └── turtledemo
+    ├── Tools
+    │   ├── make_release.py  # Patching script
+    │   └── release_versions.txt  # 3.8~3.13
     │
-    ...  # More versions
-    │
-    ├── __init__.py
-    └── setup.py
+    └── setup.py  # Installation script
 ```
 
 ## Manual steps
@@ -135,3 +166,23 @@ idlecn_build
     ```
 
 4.  Read all `*.rej` files and resolve conflicts manually.
+
+5.  Package and install.
+
+    Local install:
+
+    ```bash
+    cd IDLE-CN
+    pip install .
+    cd ..
+    ```
+
+    Package and upload to PyPI:
+
+    ```bash
+    cd IDLE-CN
+    python setup.py sdist bdist_wheel
+    twine upload dist/*
+    cd ..
+    ```
+```
