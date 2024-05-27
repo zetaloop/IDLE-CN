@@ -84,9 +84,9 @@ os.system("git fetch upstream --no-tags")
 os.system("git checkout main")
 os.system("git branch")  # Just to show the current branch
 patch_branches = [
-    ln.replace("*", "").strip()
-    for ln in os.popen("git branch").read().split("\n")
-    if ln
+    ln.strip().split(" ")[0].split("/")[1]
+    for ln in os.popen("git branch -r").read().split("\n")
+    if "origin" in ln and "HEAD" not in ln
 ]
 for branch in patch_branches:
     print(
@@ -95,7 +95,7 @@ for branch in patch_branches:
     )
     patch_dir_branch = patch_dir / branch
     patch_dir_branch.mkdir(parents=True, exist_ok=True)
-    os.system(f"git checkout {branch}")
+    os.system(f"git checkout origin/{branch}")
     os.system(f"git format-patch upstream/{branch} -o {patch_dir_branch}")
 
 print(f"\n{INFO}>>> Creating releases...{END}")
