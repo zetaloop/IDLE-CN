@@ -1,6 +1,5 @@
 from setuptools import setup
 from pathlib import Path
-import sys
 
 
 def find_idcn_release_files():
@@ -9,21 +8,13 @@ def find_idcn_release_files():
     for file in release_dir.rglob("*"):
         if file.is_file():
             release_files.append(str(file.relative_to("idcn")))
+    release_files.append("../idcn.pth")
     return release_files
-
-
-def get_site_packages_dir():
-    if sys.platform == "win32":
-        return "lib/site-packages"
-    else:
-        return "lib/python{0}/site-packages".format(
-            ".".join(str(i) for i in sys.version_info[:2])
-        )
 
 
 setup(
     name="idcn",
-    version="1.0.1",
+    version="1.1.0",
     author="zetaloop",
     author_email="zetaloop@outlook.com",
     description="IDLE Chinese Translation | IDLE 汉化包",
@@ -32,7 +23,6 @@ setup(
     url="https://github.com/zetaloop/IDLE-CN",
     packages=["idcn"],
     package_data={"idcn": find_idcn_release_files()},
-    data_files=[(get_site_packages_dir(), ["idcn.pth"])],
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
@@ -52,6 +42,5 @@ setup(
         "Natural Language :: Chinese (Simplified)",
     ],
     python_requires=">=3.8",
-    include_package_data=True,
     zip_safe=False,
 )
