@@ -46,7 +46,7 @@ Windows：<code>C:\Users\%uername%\.idlerc</code> 文件夹<br>
 Linux/macOS：<code>~/.idlerc</code> 文件夹
 </details>
 
-如果上述之后汉化仍然闪退，请将 IDLE 的报错内容和 Python 版本告诉我（[创建议题](https://github.com/zetaloop/IDLE-CN/issues/new) / [电子邮件](mailto:zetaloop@outlook.com)），我去修复。
+如果汉化仍然闪退，请将 IDLE 的报错内容和 Python 版本告诉我（[创建议题](https://github.com/zetaloop/IDLE-CN/issues/new) / [电子邮件](mailto:zetaloop@outlook.com)），我去修复。
 
 您可先 [卸载汉化](#卸载)，一切应该会恢复原样。<br>（如果还是闪退，参考上面配置文件编码问题，删除配置文件，现在应该真的恢复原样了）
 
