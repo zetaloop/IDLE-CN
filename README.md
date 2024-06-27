@@ -32,15 +32,15 @@ pip uninstall idcn
 
 如果在安装汉化之后 IDLE 闪退：
 
-<details><summary>比如 Python 版本过旧导致 <code>ImportError: cannot import name '_setup_dialog` from 'tkinter.simpledialog'</code></summary>
+<details><summary>Python 版本过旧：<code>ImportError: cannot import name '_setup_dialog` from 'tkinter.simpledialog'</code></summary>
 遇到这个报错，是因为 Python 版本太旧。<br>
 以 Python 3.9 为例，最新的 IDLE 3.9 所使用的 _setup_dialog 函数是在 Python 3.9.5 添加的。<br>
 如果您的 Python 3.9 版本比 3.9.5 更旧，就会导致 IDLE 找不到这个函数，启动闪退。<br>
 要解决这个问题，请安装最新的 Python。（只需要小版本号最新即可，比如更新到 <a href="https://www.python.org/downloads/release/python-3913/">Python 3.9.13</a>）
 </details>
 
-<details><summary>配置文件编码问题（这个应该已经修复了）</summary>
-IDLE 打不开，也可能是因为旧的 IDLE 配置文件的编码类型和新的（UTF-8）不一样。<br>
+<details><summary>配置文件编码问题：<code>UnicodeDecodeError: 'gbk' codec can't decode byte 0x83 in position 289</code></summary>
+IDLE 打不开，可能是因为旧的 IDLE 配置文件的编码类型和新的（UTF-8）不一样。<br>
 只需把旧的配置文件删除，然后应该就可以打开了。<br>
 Windows：<code>C:\Users\%uername%\.idlerc</code> 文件夹<br>
 Linux/macOS：<code>~/.idlerc</code> 文件夹
