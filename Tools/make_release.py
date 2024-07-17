@@ -27,6 +27,7 @@ def make_release(version: str, patch: str):
     release_version_dir.mkdir(parents=True)
     os.chdir(release_version_dir)
 
+    print(f"  {INFO}Cloning{END} {version}")
     errorno += os.system("git init")
     errorno += os.system("git remote add upstream ../../../cpython")
     errorno += os.system("git fetch upstream --no-tags")
@@ -38,7 +39,12 @@ def make_release(version: str, patch: str):
         raise GitException(f"Failed to checkout {version} from cpython@{version}")
 
     for patch_file in (patch_dir / patch).glob("*.patch"):
-        errorno += os.system(f"git apply --reject --recount {patch_file}")
+        print(f'  {INFO}Applying{END} "{patch_file.name}"')
+        if os.system(f"git apply {patch_file}"):
+            print(f"{WARNING}  Patching failed, trying again WITHOUT CONTEXT{END}")
+            if os.system(f"git apply -C 0 {patch_file}"):
+                print(f"{WARNING}  Patching failed, generating reject files{END}")
+                errorno += os.system(f"git apply --reject {patch_file}")
         errorno += os.system("git add .")
         errorno += os.system(f'git commit -m "Backport patch {patch_file.name}"')
     if errorno:
@@ -49,13 +55,17 @@ def make_release(version: str, patch: str):
             raise GitException("During patching, some error occurred")
 
     print()
-    print(f"tmp_release/{version}/idlelib ==copying=> release/{version}/idlelib")
+    print(
+        f"  {INFO}Copying{END} tmp_release/{version}/idlelib => release/{version}/idlelib"
+    )
     shutil.copytree(
         "idlelib",
         release_dir / version / "idlelib",
         dirs_exist_ok=True,
     )
-    print(f"tmp_release/{version}/turtledemo ==copying=> release/{version}/turtledemo")
+    print(
+        f"  {INFO}Copying{END} tmp_release/{version}/turtledemo => release/{version}/turtledemo"
+    )
     shutil.copytree(
         "turtledemo",
         release_dir / version / "turtledemo",
