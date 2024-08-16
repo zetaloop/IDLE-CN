@@ -42,7 +42,7 @@ pip uninstall idcn
 <details><summary>配置文件编码问题：<code>UnicodeDecodeError: 'gbk' codec can't decode byte 0x83 in position 289</code></summary>
 IDLE 打不开，可能是因为旧的 IDLE 配置文件的编码类型和新的（UTF-8）不一样。<br>
 只需把旧的配置文件删除，然后应该就可以打开了。<br>
-Windows：<code>C:\Users\%uername%\.idlerc</code> 文件夹<br>
+Windows：<code>C:\Users\%username%\.idlerc</code> 文件夹<br>
 Linux/macOS：<code>~/.idlerc</code> 文件夹
 </details>
 
