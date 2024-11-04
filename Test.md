@@ -15,7 +15,7 @@ conda create -n py313 python=3.13 -y
 
 进入项目文件夹，在每个测试环境中试用 IDLE-CN。
 ```bash
-conda activate py38
+conda activate py313
 pip install .
 python -m idlelib
 conda deactivate
