@@ -14,7 +14,7 @@ def find_idcn_release_files():
 
 setup(
     name="idcn",
-    version="1.2.1",
+    version="1.3.0",
     author="zetaloop",
     author_email="zetaloop@outlook.com",
     description="IDLE Chinese Translation | IDLE 汉化包",
