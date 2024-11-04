@@ -14,7 +14,7 @@ idcn_build
 └── IDLE-CN  # IDLE-CN 项目
     ├── idcn  # 汉化模块
     │   ├── releases
-    │   │   ├── 3.8  # IDLE 3.8 汉化发布版
+    │   │   ├── 3.9  # IDLE 3.9 汉化发布版
     │   │   │   ├── idlelib
     │   │   │   └── turtledemo
     │   │   └── ...  # 更多版本
@@ -26,7 +26,7 @@ idcn_build
     │
     ├── Tools
     │   ├── make_release.py  # 自动移植脚本
-    │   └── release_versions.txt  # 3.8 ~ 3.13
+    │   └── release_versions.txt  # 3.9 ~ 3.13
     │
     └── setup.py  # 安装脚本
 
@@ -110,7 +110,7 @@ idcn_build
 └── IDLE-CN  # IDLE-CN Project
     ├── idcn  # Translator Module
     │   ├── releases
-    │   │   ├── 3.8  # IDLE 3.8 zh-CN Release
+    │   │   ├── 3.9  # IDLE 3.9 zh-CN Release
     │   │   │   ├── idlelib
     │   │   │   └── turtledemo
     │   │   └── ...  # More versions
@@ -122,7 +122,7 @@ idcn_build
     │
     ├── Tools
     │   ├── make_release.py  # Patching script
-    │   └── release_versions.txt  # 3.8~3.13
+    │   └── release_versions.txt  # 3.9~3.13
     │
     └── setup.py  # Installation script
 ```

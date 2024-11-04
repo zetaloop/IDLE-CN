@@ -4,7 +4,6 @@
 
 我们使用 Anaconda/Miniconda 为每个 Python 发行版创建测试环境。
 ```bash
-conda create -n py38 python=3.8 -y
 conda create -n py39 python=3.9 -y
 conda create -n py310 python=3.10 -y
 conda create -n py311 python=3.11 -y
@@ -31,7 +30,6 @@ conda deactivate
 
 Use Anaconda/Miniconda to create testing environments for each Python version.
 ```bash
-conda create -n py38 python=3.8 -y
 conda create -n py39 python=3.9 -y
 conda create -n py310 python=3.10 -y
 conda create -n py311 python=3.11 -y

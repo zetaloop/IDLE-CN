@@ -3,7 +3,7 @@
 ![Pypi 总下载量](https://img.shields.io/pepy/dt/idcn?label=Pypi%20总下载量) ![GitHub 总下载量](https://img.shields.io/github/downloads/zetaloop/idle-cn/total?label=GitHub%20总下载量)
 
 
-**支持版本: Python 3.8~3.13 的最新版本**（跟随 [cpython](https://github.com/python/cpython) 各分支最新源码）
+**支持版本: Python 3.9~3.13 的最新版本**（跟随 [cpython](https://github.com/python/cpython) 各分支最新源码）
 
 <img src="https://github.com/zetaloop/IDLE-CN/assets/36418285/16f3d1a4-6e77-44d7-8a66-a396539b38d0" alt="First Image" style="width: 48%;">
 <img src="https://github.com/zetaloop/IDLE-CN/assets/36418285/281674c1-69a1-4383-ba31-fdc612d7395b" alt="Second Image" style="width: 48%;">
