@@ -57,7 +57,7 @@ Linux/macOS：<code>~/.idlerc</code> 文件夹
 
 构建指南：[Build.md](https://github.com/zetaloop/IDLE-CN/blob/main/Build.md)<br>测试指南：[Test.md](https://github.com/zetaloop/IDLE-CN/blob/main/Test.md)
 
-推荐搭配 [MapleMono NF SC](https://github.com/subframe7536/maple-font) 字体
+推荐搭配 [MapleMono NF CN](https://github.com/subframe7536/maple-font) 字体
 
 ## 项目进展
 - [x] 汉化 turtledemo
