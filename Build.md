@@ -72,6 +72,8 @@ idcn_build
 
 4.  查看所有产生的 `*.rej` 冲突文件，手动解决补丁冲突。
 
+    比较方便的手动解决方法：从上游新建特定版本的 `3.xx-update` 分支，然后将旧的 `3.xx` 中的几个汉化提交摘取到新分支中，解决冲突，再将 `3.xx` 硬重置到新分支。
+
 5.  打包与安装。
 
     本地安装：
@@ -166,6 +168,8 @@ idcn_build
     ```
 
 4.  Read all `*.rej` files and resolve conflicts manually.
+
+    A convenient way to resolve conflicts manually: create a new `3.xx-update` branch from the upstream, then cherry-pick several translation commits from the old `3.xx` to the new branch, resolve conflicts, and hard reset `3.xx` to the new branch.
 
 5.  Package and install.
 
