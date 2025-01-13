@@ -74,16 +74,15 @@ def make_release(version: str, patch: str):
 
 
 def find_closest_patch(version: str):
+    if version == "main":
+        return "main"
+
     patches = sorted(
-        (
-            tuple(map(int, version.split(".")))
-            for version in patch_branches
-            if version != "main"
-        )
+        (tuple(map(int, v.split("."))) for v in patch_branches if v != "main")
     )
-    version = tuple(map(int, version.split(".")))
+    version_tuple = tuple(map(int, version.split(".")))
     for patch in patches:
-        if patch >= version:
+        if patch >= version_tuple:
             return ".".join(map(str, patch))
     else:
         return "main"
