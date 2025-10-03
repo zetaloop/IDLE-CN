@@ -26,7 +26,7 @@ idcn_build
     │
     ├── Tools
     │   ├── make_release.py  # 自动移植脚本
-    │   └── release_versions.txt  # 3.9 ~ 3.13
+    │   └── release_versions.txt  # 3.9 ~ 3.14
     │
     └── setup.py  # 安装脚本
 
@@ -124,7 +124,7 @@ idcn_build
     │
     ├── Tools
     │   ├── make_release.py  # Patching script
-    │   └── release_versions.txt  # 3.9~3.13
+    │   └── release_versions.txt  # 3.9~3.14
     │
     └── setup.py  # Installation script
 ```
