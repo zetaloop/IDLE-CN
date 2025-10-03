@@ -1,0 +1,37 @@
+[project]
+name = "idcn"
+version = "1.5.0"
+authors = [{ name = "zetaloop", email = "zetaloop@outlook.com" }]
+description = "IDLE Chinese Translation | IDLE 汉化包"
+readme = { file = "README.md", content-type = "text/markdown" }
+license = "MIT"
+urls = { Homepage = "https://github.com/zetaloop/IDLE-CN" }
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "Topic :: Software Development :: Internationalization",
+    "Topic :: Software Development :: Localization",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Operating System :: OS Independent",
+    "Natural Language :: Chinese (Simplified)",
+]
+requires-python = ">=3.9"
+
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["idcn"]
+zip-safe = false
+
+[tool.setuptools.package-data]
+"idcn" = ["releases/**", "../idcn.pth"]

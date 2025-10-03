@@ -88,7 +88,7 @@ idcn_build
 
     ```bash
     cd IDLE-CN
-    python setup.py sdist bdist_wheel
+    python -m build
     twine upload dist/*
     cd ..
     ```
@@ -185,7 +185,7 @@ idcn_build
 
     ```bash
     cd IDLE-CN
-    python setup.py sdist bdist_wheel
+    python -m build
     twine upload dist/*
     cd ..
     ```
