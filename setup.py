@@ -1,5 +1,6 @@
-from setuptools import setup
 from pathlib import Path
+
+from setuptools import setup
 
 
 def find_idcn_release_files():
@@ -14,7 +15,7 @@ def find_idcn_release_files():
 
 setup(
     name="idcn",
-    version="1.4.0",
+    version="1.5.0",
     author="zetaloop",
     author_email="zetaloop@outlook.com",
     description="IDLE Chinese Translation | IDLE 汉化包",
