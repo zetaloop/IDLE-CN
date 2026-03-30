@@ -9,7 +9,6 @@ uv run --python 3.13 --isolated --with idcn --no-editable -- python -m idlelib
 uv run --python 3.12 --isolated --with idcn --no-editable -- python -m idlelib
 uv run --python 3.11 --isolated --with idcn --no-editable -- python -m idlelib
 uv run --python 3.10 --isolated --with idcn --no-editable -- python -m idlelib
-uv run --python 3.9 --isolated --with idcn --no-editable -- python -m idlelib
 ```
 
 ---
@@ -25,5 +24,4 @@ uv run --python 3.13 --isolated --with idcn --no-editable -- python -m idlelib
 uv run --python 3.12 --isolated --with idcn --no-editable -- python -m idlelib
 uv run --python 3.11 --isolated --with idcn --no-editable -- python -m idlelib
 uv run --python 3.10 --isolated --with idcn --no-editable -- python -m idlelib
-uv run --python 3.9 --isolated --with idcn --no-editable -- python -m idlelib
 ```
